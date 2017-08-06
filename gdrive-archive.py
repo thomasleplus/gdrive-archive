@@ -67,7 +67,7 @@ def get_files(service):
 def archive_files(service, files):
     for file in files:
         print(file['name'])
-        service.files().trash(fileId = file['id']).execute()
+        service.files().update(fileId = file['id'], body = { 'trashed' : True }).execute()
 
 def main():
     signal.signal(signal.SIGINT, signal_handler)
