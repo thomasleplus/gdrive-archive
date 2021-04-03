@@ -77,7 +77,8 @@ def get_files(service):
 def archive_files(service, files):
     for file in files:
         print(file['name'])
-        service.files().update(fileId=file['id'], body={'trashed' : True}).execute()
+        service.files().update(fileId=file['id'],
+                               body={'trashed': True}).execute()
 
 
 def main():
@@ -88,8 +89,9 @@ def main():
     files = get_files(service)
     print('Found {0} orphan file(s)'.format(len(files)))
     if files:
-        raw_input('Press Enter to continue...')
+        input('Press Enter to continue...')
         archive_files(service, files)
+
 
 if __name__ == '__main__':
     main()
