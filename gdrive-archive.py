@@ -49,6 +49,7 @@ def get_credentials():
             credentials = tools.run(flow, store)
     return credentials
 
+
 def get_files(service):
     files = []
     next_page = None
@@ -65,17 +66,19 @@ def get_files(service):
         else:
             for file in files:
                 if not file['parents'] and len(file['owners']) == 1 \
-                   and file['owners'][0]['isAuthenticatedUser']: 
+                   and file['owners'][0]['isAuthenticatedUser']:
                     files.extend(file)
             next_page = results.get('nextPageToken')
         if not next_page:
             break
     return files
 
+
 def archive_files(service, files):
     for file in files:
         print(file['name'])
-        service.files().update(fileId = file['id'], body = { 'trashed' : True }).execute()
+        service.files().update(fileId=file['id'], body={'trashed' : True}).execute()
+
 
 def main():
     signal.signal(signal.SIGINT, signal_handler)
