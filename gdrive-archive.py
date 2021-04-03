@@ -23,9 +23,11 @@ try:
 except ImportError:
     args = None
 
+
 def signal_handler(signal, frame):
-    print('');
+    print('')
     sys.exit(0)
+
 
 def get_credentials():
     credential_dir = os.path.join(os.path.expanduser('~'), '.credentials')
@@ -51,13 +53,19 @@ def get_files(service):
     files = []
     next_page = None
     while True:
-        results = service.files().list(q='trashed=false', spaces='drive', pageSize=1000, fields="nextPageToken, files(id, name, parents)", pageToken=next_page).execute()
+        results = service.files().list(q='trashed=false',
+                                       spaces='drive',
+                                       pageSize=1000,
+                                       fields="nextPageToken, \
+                                       files(id, name, parents)",
+                                       pageToken=next_page).execute()
         items = results.get('files', [])
         if not items:
             break
         else:
             for file in files:
-                if not file['parents'] and len(file['owners']) == 1 and file['owners'][0]['isAuthenticatedUser']:
+                if not file['parents'] and len(file['owners']) == 1 \
+                   and file['owners'][0]['isAuthenticatedUser']: 
                     files.extend(file)
             next_page = results.get('nextPageToken')
         if not next_page:
