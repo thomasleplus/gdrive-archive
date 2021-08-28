@@ -1,4 +1,5 @@
-# gdrive-archive
+# Google Drive Archive
+
 Archiving tool for Google Drive
 
 [![Flake8](https://github.com/thomasleplus/gdrive-archive/workflows/Flake8/badge.svg)](https://github.com/thomasleplus/gdrive-archive/actions?query=workflow:"Flake8")
