@@ -6,6 +6,7 @@ import argparse
 import os
 import signal
 import sys
+from argparse import Namespace
 
 import httplib2
 from googleapiclient import discovery
