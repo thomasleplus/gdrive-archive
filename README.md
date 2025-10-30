@@ -150,11 +150,7 @@ If the script reports 0 orphaned files, your Drive is already well-organized! Al
 
 ## License
 
-See LICENSE file for details.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+See [LICENSE](LICENSE) file for details.
 
 ## Contributing
 
