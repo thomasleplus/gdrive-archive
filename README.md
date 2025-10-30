@@ -9,11 +9,13 @@ This tool helps you clean up your Google Drive by finding and archiving "orphane
 ## What are Orphaned Files?
 
 Orphaned files are files in your Google Drive that:
+
 - Have no parent folder (not located in any directory)
 - Are owned by you
 - Are not in trash
 
 These files typically occur when:
+
 - Files are removed from folders but not deleted
 - Shared folders are removed, leaving files behind
 - Files are created at the root level without a folder
@@ -36,6 +38,7 @@ These files typically occur when:
 ## Installation
 
 1. Clone this repository:
+
    ```bash
    git clone https://github.com/yourusername/gdrive-archive.git
    cd gdrive-archive
@@ -70,11 +73,13 @@ These files typically occur when:
 ### 3. Install Credentials
 
 Copy the downloaded `client_secret.json` file to:
-```
+
+```bash
 ~/.credentials/gdrive-archive/client_secret.json
 ```
 
 Create the directory if it doesn't exist:
+
 ```bash
 mkdir -p ~/.credentials/gdrive-archive
 cp /path/to/downloaded/client_secret_*.json ~/.credentials/gdrive-archive/client_secret.json
@@ -83,15 +88,17 @@ cp /path/to/downloaded/client_secret_*.json ~/.credentials/gdrive-archive/client
 ## Usage
 
 Run the script:
+
 ```bash
 python gdrive_archive.py
 ```
 
 The script will:
+
 1. Open your browser for Google authentication (first run only)
 2. Search your Google Drive for orphaned files
 3. Display the count of orphaned files found
-4. List each orphaned file name
+4. List each orphaned filename
 5. Wait for you to press Enter to confirm
 6. Archive (trash) the files
 
@@ -100,6 +107,7 @@ The script will:
 - `--noauth_local_webserver`: Use this flag if running on a remote/headless server. It will provide a URL for you to visit for authentication.
 
 Example:
+
 ```bash
 python gdrive_archive.py --noauth_local_webserver
 ```
@@ -123,17 +131,21 @@ python gdrive_archive.py --noauth_local_webserver
 ## Troubleshooting
 
 ### "File not found: client_secret.json"
+
 Make sure you've placed the OAuth2 credentials file at:
 `~/.credentials/gdrive-archive/client_secret.json`
 
 ### Authentication Issues
+
 Delete the stored token and re-authenticate:
+
 ```bash
 rm ~/.credentials/gdrive-archive/user_token.json
 python gdrive_archive.py
 ```
 
 ### No Orphaned Files Found
+
 If the script reports 0 orphaned files, your Drive is already well-organized! All your files are in folders.
 
 ## License
