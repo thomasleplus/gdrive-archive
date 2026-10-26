@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Google Drive Archive Tool
 
 This script identifies and archives "orphaned" files in Google Drive - files that
@@ -24,8 +25,6 @@ Usage:
 
 The --noauth_local_webserver flag is useful for remote/headless environments.
 """
-
-from __future__ import print_function
 
 import argparse
 import os
@@ -54,7 +53,7 @@ except ImportError:
 
 def signal_handler(_signal, _frame):
     """Handle SIGINT."""
-    print("")
+    print()
     sys.exit(0)
 
 
@@ -136,9 +135,9 @@ def get_files(service):
 
         # Filter for orphaned files owned by the user
         for item in items:
-            if not item.get("parents"):  # File has no parent folder
-                if "owners" in item and item["owners"][0]["me"]:  # User owns the file
-                    files.append(item)
+            # File has no parent folder and is owned by the user
+            if not item.get("parents") and "owners" in item and item["owners"][0]["me"]:
+                files.append(item)
 
         next_page = results.get("nextPageToken")
         if not next_page:
